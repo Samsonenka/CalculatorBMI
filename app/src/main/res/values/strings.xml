@@ -6,4 +6,5 @@
     <string name="your_weight">Your weight</string>
     <string name="show_result">Show result</string>
     <string name="img_diet">img_diet</string>
+    <string name="warning_fill_fields">All fields must be filled</string>
 </resources>
