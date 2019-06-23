@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             double weight = Double.parseDouble(editTextWeight.getText().toString());
 
             Intent intent = new Intent(this, ResultBMIActivity.class);
-            intent.putExtra("result", checkSex(radioGroup, calculatorBMI(height, weight)));
+            intent.putExtra("result", calculatorBMI(height, weight));
             intent.putExtra("sex", checkSex(radioGroup));
             startActivity(intent);
         } else {
@@ -49,42 +49,6 @@ public class MainActivity extends AppCompatActivity {
         result *= 10000;
 
         return result;
-    }
-
-    public static String showManResult(double result) {
-
-        if (result <= 18.5) {
-            return "Insufficient (deficit) body weight";
-        } else {
-            if (result >= 25.5) {
-                return "Overweight (pre-obesity)";
-            } else {
-                return "Normal body weight";
-            }
-        }
-    }
-
-    public static String showWomanResult(double result) {
-
-        if (result <= 18) {
-            return "Insufficient (deficit) body weight";
-        } else {
-            if (result >= 24.5) {
-                return "Overweight (pre-obesity)";
-            } else {
-                return "Normal body weight";
-            }
-        }
-    }
-
-    public static String checkSex(RadioGroup radioGroup, double result) {
-
-        if (radioGroup.getId() == R.id.radioButtonMan){
-            return showManResult(result);
-        } else {
-            return showWomanResult(result);
-        }
-
     }
 
     public boolean checkSex(RadioGroup radioGroup) {

@@ -11,6 +11,9 @@ public class ResultBMIActivity extends AppCompatActivity {
     private TextView textViewResult;
     private ImageView imageViewAva;
 
+    private double result;
+    private boolean sex;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,15 +23,54 @@ public class ResultBMIActivity extends AppCompatActivity {
         imageViewAva = findViewById(R.id.imageViewAva);
 
         Intent intent = getIntent();
-        String result = intent.getStringExtra("result");
-        boolean sex = intent.getBooleanExtra("sex", true);
+        result = intent.getDoubleExtra("result", 0.0);
+        sex = intent.getBooleanExtra("sex", true);
 
-        if (sex) {
-            imageViewAva.setImageResource(R.drawable.manok);
+
+        textViewResult.setText(checkResult(sex, result));
+    }
+
+    public String checkResult(boolean sex, double result){
+
+        String message;
+
+        if (sex){
+            message = showManResult(result);
         } else {
-            imageViewAva.setImageResource(R.drawable.womanok);
+            message = showWomanResult(result);
         }
+        return message;
+    }
 
-        textViewResult.setText(result);
+    public String showManResult(double result) {
+
+        if (result <= 18.5) {
+            imageViewAva.setImageResource(R.drawable.mannot);
+            return "Insufficient (deficit) body weight";
+        } else {
+            if (result >= 25.5) {
+                imageViewAva.setImageResource(R.drawable.mannot);
+                return "Overweight (pre-obesity)";
+            } else {
+                imageViewAva.setImageResource(R.drawable.manok);
+                return "Normal body weight";
+            }
+        }
+    }
+
+    public String showWomanResult(double result) {
+
+        if (result <= 18) {
+            imageViewAva.setImageResource(R.drawable.womannot);
+            return "Insufficient (deficit) body weight";
+        } else {
+            if (result >= 24.5) {
+                imageViewAva.setImageResource(R.drawable.womannot);
+                return "Overweight (pre-obesity)";
+            } else {
+                imageViewAva.setImageResource(R.drawable.womanok);
+                return "Normal body weight";
+            }
+        }
     }
 }
