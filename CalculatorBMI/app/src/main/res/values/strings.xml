@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">CalculatorBMI</string>
+    <string name="man">Man</string>
+    <string name="woman">Woman</string>
+    <string name="your_height">Your height(cm)</string>
+    <string name="your_weight">Your weight</string>
+    <string name="show_result">Show result</string>
+    <string name="img_diet">img_diet</string>
+    <string name="warning_fill_fields">All fields must be filled</string>
+</resources>
